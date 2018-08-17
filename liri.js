@@ -1,16 +1,15 @@
 require("dotenv").config();
 
-
-//var spotify = require('node-spotify-api');
+var keys = require("./keys.js");
 var request = require("request");
 var fs = require("fs");//
 
-//var spotifyKeys = new Spotify(keys.spotify);//
+var liri = process.argv[2];
+var song = process.argv[3];
 
 //-----------Twitter-----------//
 var myTwitter = function() {
     var twitter = require('twitter');
-    var keys = require("./keys.js");
     var client = new twitter(keys.twitter);
     var params = {screen_name: "RickyBunns", count: 20};
 
@@ -28,9 +27,28 @@ var myTwitter = function() {
         }
     })
 };
+//----------Spotify----------//
+var spotify = function(song) {
+    var spotifyRequire = require('node-spotify-api');
+    var spotify = new spotifyRequire(keys.spotify);
 
-var liri = process.argv[2];
+    spotify.search({type: 'track', query: song, limit: 1}, function(error, data) {
+        if (error) {
+            console.log("Cannot find song");
+        } else {
+            console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
+			console.log("Song name: " + data.tracks.items[0].name);
+			console.log("External url: " + data.tracks.items[0].preview_url);
+			console.log("Album: " + data.tracks.items[0].album.name);
+		}
+    })
+};
 
 if(liri === "my-tweets") {
-    myTwitter()
+    myTwitter();
+} else {
+    if(liri === "spotify-this-song") {
+        //search song with "" around title
+        spotify(song);
+    }
 }
