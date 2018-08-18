@@ -2,7 +2,7 @@
 
 LIRI - the Language Interpretation and Recognition Interface
 
-NPM packages used:  
+##NPM packages used:  
 
 Twitter: [NPM Twitter](https://www.npmjs.com/package/twitter)
    
@@ -12,13 +12,14 @@ Twitter: [NPM Twitter](https://www.npmjs.com/package/twitter)
 
 -DotEnv: [ NPM DotEnv](https://www.npmjs.com/package/dotenv)
 
-API's used:  
+##API's used:  
 
 Twitter
 Spotify
 OMDB
 
-Functionality  
+##Functionality 
+
 You can search the following four parameters to retrieve information:
 Note, searches must have "" around the search term
 my-tweets : will retrieve the last 20 tweets from my twitter account
