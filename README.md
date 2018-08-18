@@ -3,17 +3,13 @@
 LIRI - the Language Interpretation and Recognition Interface
 
 ###NPM packages used:
--Twitter
--[Twitter](https://www.npmjs.com/package/twitter)
+Twitter:[NPM Twitter](https://www.npmjs.com/package/twitter)
    
--Node-Spotify-API
--[Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
+-Node-Spotify-API: [NPM Spotify](https://www.npmjs.com/package/node-spotify-api)
 
--Request  
--[Request](https://www.npmjs.com/package/request)
+-Request: [NPM Request](https://www.npmjs.com/package/request)
 
--DotEnv
--[DotEnv](https://www.npmjs.com/package/dotenv)
+-DotEnv: [ NPM DotEnv](https://www.npmjs.com/package/dotenv)
 
 ###API's used:
 
