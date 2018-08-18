@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
-//var fs = require("fs");//
 var liri = process.argv[2];
 var searchTerm = process.argv[3];
 
@@ -62,6 +61,37 @@ var omdb = function(searchTerm) {
         }
     })
 }
+//----------Do What It Says---------//
+function doWhatItSays() {
+    var fs = require("fs");
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        if(error) {
+            console.log("error reading Random.txt");
+        } else {
+            console.log(data);
+			// Creates array with data.
+			var randomTextArray = data.split(",");
+			// liri command
+			liri = randomTextArray[0];
+			// what to search
+            searchTerm = randomTextArray[1];
+            
+            switch(liri) {
+				case 'my-tweets':
+					myTweets(); 
+					break;
+
+				case 'spotify-this-song':
+					spotify(searchTerm);
+					break;
+
+				case 'movie-this':
+					omdb(searchTerm);
+					break;
+			}
+        }
+    });
+}
 
 if(liri === "my-tweets") {
     myTwitter();
@@ -71,4 +101,6 @@ if(liri === "my-tweets") {
 } else if (liri === "movie-this") {
     //search movie with "" around title
     omdb(searchTerm);
+} else if (liri === "do-what-it-says") {
+    doWhatItSays();
 }
