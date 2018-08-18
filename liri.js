@@ -29,7 +29,10 @@ var myTwitter = function() {
 var spotify = function(searchTerm) {
     var spotifyRequire = require('node-spotify-api');
     var spotify = new spotifyRequire(keys.spotify);
-
+    if(searchTerm === ""){
+        // If nothing is specified, search a default movie
+        searchTerm = "The Sign Ace of Base";
+      }
     spotify.search({type: 'track', query: searchTerm, limit: 1}, function(error, data) {
         if (error) {
             console.log("Cannot find song");
@@ -44,6 +47,10 @@ var spotify = function(searchTerm) {
 //-----------OMDB----------//
 var omdb = function(searchTerm) {
     var request = require("request");
+    if(searchTerm === ""){
+        // If nothing is specified, search a default movie
+        searchTerm = "Mr. Nobody";
+      }
     request("http://www.omdbapi.com/?t=" + searchTerm + "&y=&plot=short&tomatoes=true&apikey=870cd5a7", function(error, response, body) {
         if (error) {
             console.log("Cannot find movie info");
